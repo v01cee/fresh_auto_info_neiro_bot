@@ -1,9 +1,14 @@
 import asyncio
 import logging
+import sys
+import os
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram.filters import CommandStart, Command
 from aiogram.fsm.storage.memory import MemoryStorage
+
+# Добавляем корневую папку в путь
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.core.config import settings
 from app.core.logging import setup_logging
