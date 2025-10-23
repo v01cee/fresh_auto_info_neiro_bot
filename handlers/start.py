@@ -71,22 +71,8 @@ async def info_command(message: Message):
     await message.answer(info_text, reply_markup=keyboard)
 
 
-async def handle_callback_queries(callback: CallbackQuery):
-    """Обработчик callback запросов от inline клавиатур"""
-    keyboard_templates = KeyboardTemplates()
-    
-    match callback.data:
-        case "back_to_main":
-            main_text = "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!"
-            keyboard = await keyboard_templates.get_delayed_keyboard()
-            await callback.message.edit_text(main_text, reply_markup=keyboard)
-    
-    await callback.answer()
-
-
 def register_start_handlers(dp: Dispatcher):
     """Регистрация обработчиков стартовых команд"""
     dp.message.register(start_command, CommandStart())
     dp.message.register(help_command, Command("help"))
     dp.message.register(info_command, Command("info"))
-    dp.callback_query.register(handle_callback_queries)
