@@ -390,95 +390,32 @@ async def handle_callback_queries(callback: CallbackQuery):
             
         # Обработчики для работы с клиентом
         case "client_calls":
-            calls_text = """
-Контроль качества отработки входящих звонков
-
-• Мониторинг времени ответа на звонки
-• Контроль качества консультаций
-• Анализ обращений клиентов
-• Обучение операторов стандартам работы
-• Ведение статистики звонков
-"""
             keyboard = await keyboard_templates.get_cancel_keyboard()
-            await callback.message.edit_text(calls_text, reply_markup=keyboard)
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_website":
-            website_text = """
-Контроль отработки заявок с сайта
-
-• Мониторинг поступления заявок
-• Контроль времени обработки заявок
-• Качество ответов на заявки
-• Отслеживание конверсии заявок в сделки
-• Анализ эффективности онлайн-каналов
-"""
             keyboard = await keyboard_templates.get_cancel_keyboard()
-            await callback.message.edit_text(website_text, reply_markup=keyboard)
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_crm_entry":
-            crm_entry_text = """
-Контроль занесения клиента в CRM
-
-• Проверка полноты данных о клиенте
-• Контроль корректности заполнения полей
-• Мониторинг своевременности внесения данных
-• Анализ качества ведения клиентской базы
-• Обучение сотрудников работе с CRM
-"""
             keyboard = await keyboard_templates.get_cancel_keyboard()
-            await callback.message.edit_text(crm_entry_text, reply_markup=keyboard)
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_crm_consignor":
-            crm_consignor_text = """
-Контроль ведения комитента в CRM
-
-• Отслеживание статусов комитентов
-• Контроль обновления информации
-• Мониторинг взаимодействия с комитентами
-• Анализ эффективности работы с комитентами
-• Планирование работы с комитентской базой
-"""
             keyboard = await keyboard_templates.get_cancel_keyboard()
-            await callback.message.edit_text(crm_consignor_text, reply_markup=keyboard)
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_outgoing_calls":
-            outgoing_calls_text = """
-Контроль качества исходящих звонков
-
-• Мониторинг инициативы в обзвоне клиентов
-• Контроль соблюдения скриптов общения
-• Анализ результативности исходящих звонков
-• Обучение сотрудников техникам продаж
-• Ведение статистики конверсии звонков
-"""
             keyboard = await keyboard_templates.get_cancel_keyboard()
-            await callback.message.edit_text(outgoing_calls_text, reply_markup=keyboard)
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_documents":
-            documents_text = """
-Контроль корректно оформленных документов
-
-• Проверка полноты документооборота
-• Контроль соответствия документов стандартам
-• Мониторинг своевременности оформления
-• Анализ качества документооборота
-• Обучение сотрудников правилам документооборота
-"""
             keyboard = await keyboard_templates.get_cancel_keyboard()
-            await callback.message.edit_text(documents_text, reply_markup=keyboard)
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_payments":
-            payments_text = """
-Контроль соблюдения сроков оплаты клиентам и партнерам
-
-• Мониторинг сроков выплат клиентам
-• Контроль платежей партнерам
-• Отслеживание дебиторской задолженности
-• Анализ финансовой дисциплины
-• Планирование денежных потоков
-"""
             keyboard = await keyboard_templates.get_cancel_keyboard()
-            await callback.message.edit_text(payments_text, reply_markup=keyboard)
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_closing_manager":
             closing_manager_text = """
@@ -495,18 +432,8 @@ async def handle_callback_queries(callback: CallbackQuery):
             await callback.message.edit_text(closing_manager_text, reply_markup=keyboard)
             
         case "client_complaints":
-            complaints_text = """
-Отработка рекламаций
-
-• Прием и регистрация жалоб клиентов
-• Анализ причин возникновения рекламаций
-• Разработка планов устранения недостатков
-• Контроль выполнения мероприятий
-• Взаимодействие с ответственными подразделениями
-• Мониторинг удовлетворенности клиентов
-"""
             keyboard = await keyboard_templates.get_cancel_keyboard()
-            await callback.message.edit_text(complaints_text, reply_markup=keyboard)
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_call_center":
             call_center_text = """
