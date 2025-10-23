@@ -1,6 +1,6 @@
 import asyncio
 from aiogram import Dispatcher
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, CallbackQuery
 from core.keyboard_templates import KeyboardTemplates
 
@@ -35,6 +35,7 @@ async def start_command(message: Message):
     
     # Отправляем новое сообщение с инлайн-клавиатурой
     delayed_text = "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!"
+    keyboard_templates = KeyboardTemplates()
     delayed_keyboard = await keyboard_templates.get_delayed_keyboard()
     await message.answer(delayed_text, reply_markup=delayed_keyboard)
 
