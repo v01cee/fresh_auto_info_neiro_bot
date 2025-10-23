@@ -132,6 +132,7 @@ async def handle_callback_queries(callback: CallbackQuery):
         case "back_to_main":
             # Определяем предыдущий уровень на основе текущего сообщения
             current_text = callback.message.text
+            print(f"DEBUG: back_to_main вызван! Текущий текст: {current_text[:100]}...")
             
             if "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!" in current_text:
                 # Уже на главном меню, ничего не делаем
@@ -311,7 +312,8 @@ async def handle_callback_queries(callback: CallbackQuery):
             
         # Обработчики для функционала РОО
         case "functionality_supplies":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "functionality_client":
             client_text = """
@@ -329,7 +331,8 @@ async def handle_callback_queries(callback: CallbackQuery):
                 "Контроль соблюдения сроков оплаты клиентам и партнерам": "client_payments",
                 "Работа в роли закрывающего менеджера": "client_closing_manager",
                 "Отработка рекламаций": "client_complaints",
-                "Контроль отработки заявок от КЦ": "client_call_center"
+                "Контроль отработки заявок от КЦ": "client_call_center",
+                "<- Назад": "back_to_main"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_buttons, interval=1)
             await callback.message.edit_text(client_text, reply_markup=keyboard)
@@ -347,7 +350,8 @@ async def handle_callback_queries(callback: CallbackQuery):
                 "Контроль состояния склада": "warehouse_status_control",
                 "Работа с проблемным складом": "warehouse_problematic",
                 "Средний возраст склада": "warehouse_average_age",
-                "Контроль качества сделанной предпродажной подготовки": "warehouse_pre_sale_quality"
+                "Контроль качества сделанной предпродажной подготовки": "warehouse_pre_sale_quality",
+                "<- Назад": "back_to_main"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(warehouse_buttons, interval=1)
             await callback.message.edit_text(warehouse_text, reply_markup=keyboard)
@@ -360,7 +364,8 @@ async def handle_callback_queries(callback: CallbackQuery):
 """
             numbers_buttons = {
                 "Обязанность 2.1": "numbers_duty_2_1",
-                "Обязанность 2.2": "numbers_duty_2_2"
+                "Обязанность 2.2": "numbers_duty_2_2",
+                "<- Назад": "back_to_main"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(numbers_buttons, interval=1)
             await callback.message.edit_text(numbers_text, reply_markup=keyboard)
@@ -377,7 +382,8 @@ async def handle_callback_queries(callback: CallbackQuery):
                 "Мотивация": "personnel_motivation",
                 "Обучение": "personnel_training",
                 "Увольнение": "personnel_dismissal",
-                "Подбор персонала": "personnel_recruitment"
+                "Подбор персонала": "personnel_recruitment",
+                "<- Назад": "back_to_main"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(personnel_buttons, interval=1)
             await callback.message.edit_text(personnel_text, reply_markup=keyboard)
@@ -482,7 +488,8 @@ async def handle_callback_queries(callback: CallbackQuery):
 """
             closing_manager_buttons = {
                 "Цель: повышение конверсии": "closing_conversion",
-                "Цель: предотвращение конфликтных ситуаций": "closing_conflicts"
+                "Цель: предотвращение конфликтных ситуаций": "closing_conflicts",
+                "<- Назад": "back_to_main"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(closing_manager_buttons, interval=1)
             await callback.message.edit_text(closing_manager_text, reply_markup=keyboard)
@@ -509,42 +516,53 @@ async def handle_callback_queries(callback: CallbackQuery):
 """
             call_center_buttons = {
                 "Взаимодействие с КЦ": "call_center_interaction",
-                "Контроль ЭО": "call_center_evaluation"
+                "Контроль ЭО": "call_center_evaluation",
+                "<- Назад": "back_to_main"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(call_center_buttons, interval=1)
             await callback.message.edit_text(call_center_text, reply_markup=keyboard)
             
         # Обработчики для закрывающего менеджера
         case "closing_conversion":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "closing_conflicts":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "call_center_interaction":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "call_center_evaluation":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         # Обработчики для работы со складом
         case "warehouse_pricing_new_arrival":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_advertising":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_check_new_arrival":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_status_control":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_problematic":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_average_age":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_pre_sale_quality":
             pre_sale_text = """
@@ -555,40 +573,50 @@ async def handle_callback_queries(callback: CallbackQuery):
             pre_sale_buttons = {
                 "Выкупной склад": "warehouse_buyout",
                 "Комиссионный склад": "warehouse_consignment",
-                "Склад 45+": "warehouse_45_plus"
+                "Склад 45+": "warehouse_45_plus",
+                "<- Назад": "back_to_main"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(pre_sale_buttons, interval=1)
             await callback.message.edit_text(pre_sale_text, reply_markup=keyboard)
             
         # Обработчики для типов складов
         case "warehouse_buyout":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_consignment":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_45_plus":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         # Обработчики для работы с цифрами
         case "numbers_duty_2_1":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "numbers_duty_2_2":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         # Обработчики для работы с персоналом
         case "personnel_intern_adaptation":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "personnel_burnout":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "personnel_motivation":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "personnel_training":
-            await callback.message.edit_text("В разработке")
+            keyboard = await keyboard_templates.get_cancel_keyboard()
+            await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "personnel_dismissal":
             dismissal_text = """
@@ -610,7 +638,8 @@ async def handle_callback_queries(callback: CallbackQuery):
             recruitment_buttons = {
                 "Вакансия": "recruitment_vacancy",
                 "Кого мы ищем": "recruitment_profile",
-                "Как проводить собеседование": "recruitment_interview"
+                "Как проводить собеседование": "recruitment_interview",
+                "<- Назад": "back_to_main"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(recruitment_buttons, interval=1)
             await callback.message.edit_text(recruitment_text, reply_markup=keyboard)
