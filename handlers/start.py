@@ -108,7 +108,8 @@ async def handle_callback_queries(callback: CallbackQuery):
                 "Работа с клиентом": "functionality_client", 
                 "Работа со складом": "functionality_warehouse",
                 "Работа с цифрами": "functionality_numbers",
-                "Работа с персоналом": "functionality_personnel"
+                "Работа с персоналом": "functionality_personnel",
+                "<- Назад": "back_to_main"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(functionality_buttons, interval=1)
             await callback.message.edit_text(functionality_text, reply_markup=keyboard)
@@ -310,16 +311,7 @@ async def handle_callback_queries(callback: CallbackQuery):
             
         # Обработчики для функционала РОО
         case "functionality_supplies":
-            supplies_text = """
-Работа с поставками
-
-• Контроль качества поступающих автомобилей
-• Взаимодействие с поставщиками
-• Планирование поставок
-• Оценка ликвидности поставляемых автомобилей
-"""
-            keyboard = await keyboard_templates.get_cancel_keyboard()
-            await callback.message.edit_text(supplies_text, reply_markup=keyboard)
+            await callback.message.edit_text("В разработке")
             
         case "functionality_client":
             client_text = """
