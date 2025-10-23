@@ -10,9 +10,9 @@ from aiogram.fsm.storage.memory import MemoryStorage
 # Добавляем корневую папку в путь
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from app.core.config import settings
-from app.core.logging import setup_logging
-from app.handlers import register_handlers
+from core.config import settings
+from core.logging import setup_logging
+from handlers import register_handlers
 
 
 async def main():
