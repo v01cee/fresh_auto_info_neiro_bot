@@ -5,4 +5,4 @@ services:
     container_name: fresh_auto_info_neiro_bot
     env_file: .env
     restart: unless-stopped
-    command: python app/bot.py
+    command: python bot.py
