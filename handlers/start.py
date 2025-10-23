@@ -458,7 +458,7 @@ async def handle_callback_queries(callback: CallbackQuery):
             closing_manager_buttons = {
                 "Цель: повышение конверсии": "closing_conversion",
                 "Цель: предотвращение конфликтных ситуаций": "closing_conflicts",
-                "<- Назад": "back_to_main"
+                "<- Назад": "back_to_client_menu"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(closing_manager_buttons, interval=1)
             await callback.message.edit_text(closing_manager_text, reply_markup=keyboard)
@@ -480,42 +480,42 @@ async def handle_callback_queries(callback: CallbackQuery):
             call_center_buttons = {
                 "Взаимодействие с КЦ": "call_center_interaction",
                 "Контроль ЭО": "call_center_evaluation",
-                "<- Назад": "back_to_main"
+                "<- Назад": "back_to_client_menu"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(call_center_buttons, interval=1)
             await callback.message.edit_text(call_center_text, reply_markup=keyboard)
             
         # Обработчики для закрывающего менеджера
         case "closing_conversion":
-            # Создаем кнопку "Назад" к меню "Работа с клиентом"
-            client_back_buttons = {
-                "<- Назад": "back_to_client_menu"
+            # Создаем кнопку "Назад" к меню "Работа в роли закрывающего менеджера"
+            closing_back_buttons = {
+                "<- Назад": "back_to_closing_manager"
             }
-            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(closing_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "closing_conflicts":
-            # Создаем кнопку "Назад" к меню "Работа с клиентом"
-            client_back_buttons = {
-                "<- Назад": "back_to_client_menu"
+            # Создаем кнопку "Назад" к меню "Работа в роли закрывающего менеджера"
+            closing_back_buttons = {
+                "<- Назад": "back_to_closing_manager"
             }
-            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(closing_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "call_center_interaction":
-            # Создаем кнопку "Назад" к меню "Работа с клиентом"
-            client_back_buttons = {
-                "<- Назад": "back_to_client_menu"
+            # Создаем кнопку "Назад" к меню "Контроль отработки заявок от КЦ"
+            call_center_back_buttons = {
+                "<- Назад": "back_to_call_center"
             }
-            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(call_center_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "call_center_evaluation":
-            # Создаем кнопку "Назад" к меню "Работа с клиентом"
-            client_back_buttons = {
-                "<- Назад": "back_to_client_menu"
+            # Создаем кнопку "Назад" к меню "Контроль отработки заявок от КЦ"
+            call_center_back_buttons = {
+                "<- Назад": "back_to_call_center"
             }
-            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(call_center_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         # Обработчики для работы со складом
@@ -867,6 +867,36 @@ Small Talk
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_buttons, interval=1)
             await callback.message.edit_text(client_text, reply_markup=keyboard)
+            
+        case "back_to_closing_manager":
+            # Возвращаемся к меню "Работа в роли закрывающего менеджера"
+            closing_manager_text = """
+Работа в роли закрывающего менеджера
+
+Выберите цель:
+"""
+            closing_manager_buttons = {
+                "Цель: повышение конверсии": "closing_conversion",
+                "Цель: предотвращение конфликтных ситуаций": "closing_conflicts",
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(closing_manager_buttons, interval=1)
+            await callback.message.edit_text(closing_manager_text, reply_markup=keyboard)
+            
+        case "back_to_call_center":
+            # Возвращаемся к меню "Контроль отработки заявок от КЦ"
+            call_center_text = """
+Контроль отработки заявок от КЦ
+
+Выберите направление:
+"""
+            call_center_buttons = {
+                "Взаимодействие с КЦ": "call_center_interaction",
+                "Контроль ЭО": "call_center_evaluation",
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(call_center_buttons, interval=1)
+            await callback.message.edit_text(call_center_text, reply_markup=keyboard)
     
     await callback.answer()
 
