@@ -10,7 +10,7 @@ class KeyboardTemplates:
     async def get_cancel_keyboard(self):
         """Клавиатура с кнопкой Назад"""
         buttons = {
-            "🔙 Назад": "back_to_main"
+            "<- Назад": "back_to_main"
         }
         return await self.keyboard_ops.create_keyboard(buttons, interval=1)
     
