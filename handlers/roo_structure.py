@@ -26,5 +26,5 @@ async def handle_roo_structure(callback: CallbackQuery):
 """
     keyboard_templates = KeyboardTemplates()
     keyboard = await keyboard_templates.get_cancel_keyboard()
-    await callback.message.answer(structure_text, reply_markup=keyboard)
+    await callback.message.edit_text(structure_text, reply_markup=keyboard)
     await callback.answer()

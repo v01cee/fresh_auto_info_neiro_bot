@@ -59,5 +59,5 @@ async def handle_roo_competencies(callback: CallbackQuery):
 """
     keyboard_templates = KeyboardTemplates()
     keyboard = await keyboard_templates.get_cancel_keyboard()
-    await callback.message.answer(competencies_text, reply_markup=keyboard)
+    await callback.message.edit_text(competencies_text, reply_markup=keyboard)
     await callback.answer()

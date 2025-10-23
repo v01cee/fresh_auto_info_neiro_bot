@@ -77,7 +77,9 @@ async def handle_callback_queries(callback: CallbackQuery):
     
     match callback.data:
         case "back_to_main":
-            await callback.message.answer("🏠 Главное меню")
+            main_text = "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!"
+            keyboard = await keyboard_templates.get_delayed_keyboard()
+            await callback.message.edit_text(main_text, reply_markup=keyboard)
     
     await callback.answer()
 

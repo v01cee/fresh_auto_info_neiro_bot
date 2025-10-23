@@ -21,4 +21,4 @@ class KeyboardTemplates:
             "Функционал РОО": "roo_functionality", 
             "Компетенции РОО": "roo_competencies"
         }
-        return await self.keyboard_ops.create_keyboard(buttons, interval=3)
+        return await self.keyboard_ops.create_keyboard(buttons, interval=1)

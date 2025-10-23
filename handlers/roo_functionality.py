@@ -11,5 +11,5 @@ async def handle_roo_functionality(callback: CallbackQuery):
     functionality_text = "Функционал РОО"
     keyboard_templates = KeyboardTemplates()
     keyboard = await keyboard_templates.get_cancel_keyboard()
-    await callback.message.answer(functionality_text, reply_markup=keyboard)
+    await callback.message.edit_text(functionality_text, reply_markup=keyboard)
     await callback.answer()
