@@ -122,7 +122,8 @@ async def handle_callback_queries(callback: CallbackQuery):
             competencies_buttons = {
                 "Корпоративные": "competencies_corporate",
                 "Технические": "competencies_technical",
-                "Управленческие": "competencies_management"
+                "Управленческие": "competencies_management",
+                "<- Назад": "back_to_main"
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(competencies_buttons, interval=1)
             await callback.message.edit_text(competencies_text, reply_markup=keyboard)
@@ -219,7 +220,8 @@ async def handle_callback_queries(callback: CallbackQuery):
                 competencies_buttons = {
                     "Корпоративные": "competencies_corporate",
                     "Технические": "competencies_technical",
-                    "Управленческие": "competencies_management"
+                    "Управленческие": "competencies_management",
+                    "<- Назад": "back_to_main"
                 }
                 keyboard = await keyboard_templates.keyboard_ops.create_keyboard(competencies_buttons, interval=1)
                 await callback.message.edit_text(competencies_text, reply_markup=keyboard)
@@ -706,7 +708,11 @@ Small Talk
 • Способность к трансформациям
 -готовность быстро, открыто и гибко менять свой жизненный и профессиональный уклад в ответ на изменения среды
 """
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем клавиатуру с кнопкой "Назад" к выбору типа компетенций
+            competencies_back_buttons = {
+                "<- Назад": "competencies_back_to_types"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(competencies_back_buttons, interval=1)
             await callback.message.edit_text(corporate_text, reply_markup=keyboard)
             
         case "competencies_technical":
@@ -727,7 +733,11 @@ Small Talk
 • Умение анализировать ключевые показатели эффективности смежных подразделений
 • Знание кросс функциональных задач с ОП, техническим отделом и другими подразделениями
 """
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем клавиатуру с кнопкой "Назад" к выбору типа компетенций
+            competencies_back_buttons = {
+                "<- Назад": "competencies_back_to_types"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(competencies_back_buttons, interval=1)
             await callback.message.edit_text(technical_text, reply_markup=keyboard)
             
         case "competencies_management":
@@ -752,7 +762,11 @@ Small Talk
 • Знание инструментов улучшения ключевых показателей эффективности
 • Знание инструментов управления расходами
 """
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем клавиатуру с кнопкой "Назад" к выбору типа компетенций
+            competencies_back_buttons = {
+                "<- Назад": "competencies_back_to_types"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(competencies_back_buttons, interval=1)
             await callback.message.edit_text(management_text, reply_markup=keyboard)
     
     await callback.answer()
