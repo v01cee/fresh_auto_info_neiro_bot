@@ -312,7 +312,11 @@ async def handle_callback_queries(callback: CallbackQuery):
             
         # Обработчики для функционала РОО
         case "functionality_supplies":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "functionality_client":
@@ -390,31 +394,59 @@ async def handle_callback_queries(callback: CallbackQuery):
             
         # Обработчики для работы с клиентом
         case "client_calls":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_website":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_crm_entry":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_crm_consignor":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_outgoing_calls":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_documents":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_payments":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_closing_manager":
@@ -432,7 +464,11 @@ async def handle_callback_queries(callback: CallbackQuery):
             await callback.message.edit_text(closing_manager_text, reply_markup=keyboard)
             
         case "client_complaints":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "client_call_center":
@@ -451,44 +487,84 @@ async def handle_callback_queries(callback: CallbackQuery):
             
         # Обработчики для закрывающего менеджера
         case "closing_conversion":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "closing_conflicts":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "call_center_interaction":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "call_center_evaluation":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         # Обработчики для работы со складом
         case "warehouse_pricing_new_arrival":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_advertising":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_check_new_arrival":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_status_control":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_problematic":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_average_age":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_pre_sale_quality":
@@ -508,41 +584,77 @@ async def handle_callback_queries(callback: CallbackQuery):
             
         # Обработчики для типов складов
         case "warehouse_buyout":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_consignment":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "warehouse_45_plus":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         # Обработчики для работы с цифрами
         case "numbers_duty_2_1":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "numbers_duty_2_2":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         # Обработчики для работы с персоналом
         case "personnel_intern_adaptation":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "personnel_burnout":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "personnel_motivation":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "personnel_training":
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с клиентом"
+            client_back_buttons = {
+                "<- Назад": "back_to_client_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_back_buttons, interval=1)
             await callback.message.edit_text("В разработке", reply_markup=keyboard)
             
         case "personnel_dismissal":
@@ -732,6 +844,29 @@ Small Talk
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(competencies_buttons, interval=1)
             await callback.message.edit_text(competencies_text, reply_markup=keyboard)
+            
+        case "back_to_client_menu":
+            # Возвращаемся к меню "Работа с клиентом"
+            client_text = """
+Работа с клиентом
+
+Выберите направление контроля:
+"""
+            client_buttons = {
+                "Контроль качества отработки входящих звонков": "client_calls",
+                "Контроль отработки заявок с сайта": "client_website", 
+                "Контроль занесения клиента в CRM": "client_crm_entry",
+                "Контроль ведения комитента в CRM": "client_crm_consignor",
+                "Контроль качества исходящих звонков": "client_outgoing_calls",
+                "Контроль корректно оформленных документов": "client_documents",
+                "Контроль соблюдения сроков оплаты клиентам и партнерам": "client_payments",
+                "Работа в роли закрывающего менеджера": "client_closing_manager",
+                "Отработка рекламаций": "client_complaints",
+                "Контроль отработки заявок от КЦ": "client_call_center",
+                "<- Назад": "back_to_main"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_buttons, interval=1)
+            await callback.message.edit_text(client_text, reply_markup=keyboard)
     
     await callback.answer()
 
