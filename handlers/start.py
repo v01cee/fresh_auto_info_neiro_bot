@@ -768,6 +768,22 @@ Small Talk
             }
             keyboard = await keyboard_templates.keyboard_ops.create_keyboard(competencies_back_buttons, interval=1)
             await callback.message.edit_text(management_text, reply_markup=keyboard)
+            
+        case "competencies_back_to_types":
+            # Возвращаемся к выбору типа компетенций
+            competencies_text = """
+Компетенции РОО, которые важны для работы и которые нужно развивать, можно разделить на 3 типа:
+
+Выберите тип компетенций:
+"""
+            competencies_buttons = {
+                "Корпоративные": "competencies_corporate",
+                "Технические": "competencies_technical",
+                "Управленческие": "competencies_management",
+                "<- Назад": "back_to_main"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(competencies_buttons, interval=1)
+            await callback.message.edit_text(competencies_text, reply_markup=keyboard)
     
     await callback.answer()
 
