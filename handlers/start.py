@@ -209,6 +209,20 @@ async def handle_callback_queries(callback: CallbackQuery):
                 main_text = "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!"
                 keyboard = await keyboard_templates.get_delayed_keyboard()
                 await callback.message.edit_text(main_text, reply_markup=keyboard)
+            elif "Компетенции РОО" in current_text and ("Корпоративные" in current_text or "Технические" in current_text or "Управленческие" in current_text):
+                # Возвращаемся к выбору типа компетенций
+                competencies_text = """
+Компетенции РОО, которые важны для работы и которые нужно развивать, можно разделить на 3 типа:
+
+Выберите тип компетенций:
+"""
+                competencies_buttons = {
+                    "Корпоративные": "competencies_corporate",
+                    "Технические": "competencies_technical",
+                    "Управленческие": "competencies_management"
+                }
+                keyboard = await keyboard_templates.keyboard_ops.create_keyboard(competencies_buttons, interval=1)
+                await callback.message.edit_text(competencies_text, reply_markup=keyboard)
             elif "Подбор персонала" in current_text and "Выберите направление:" in current_text:
                 # Возвращаемся к работе с персоналом
                 personnel_text = """
@@ -226,6 +240,66 @@ async def handle_callback_queries(callback: CallbackQuery):
                 }
                 keyboard = await keyboard_templates.keyboard_ops.create_keyboard(personnel_buttons, interval=1)
                 await callback.message.edit_text(personnel_text, reply_markup=keyboard)
+            elif "Контроль качества сделанной предпродажной подготовки" in current_text and "Выберите тип склада:" in current_text:
+                # Возвращаемся к работе со складом
+                warehouse_text = """
+Работа со складом
+
+Выберите направление работы:
+"""
+                warehouse_buttons = {
+                    "Ценообразование нового поступления": "warehouse_pricing_new_arrival",
+                    "Вывод в рекламу": "warehouse_advertising",
+                    "Проверка свежего поступления": "warehouse_check_new_arrival",
+                    "Контроль состояния склада": "warehouse_status_control",
+                    "Работа с проблемным складом": "warehouse_problematic",
+                    "Средний возраст склада": "warehouse_average_age",
+                    "Контроль качества сделанной предпродажной подготовки": "warehouse_pre_sale_quality"
+                }
+                keyboard = await keyboard_templates.keyboard_ops.create_keyboard(warehouse_buttons, interval=1)
+                await callback.message.edit_text(warehouse_text, reply_markup=keyboard)
+            elif "Работа в роли закрывающего менеджера" in current_text and "Выберите цель:" in current_text:
+                # Возвращаемся к работе с клиентом
+                client_text = """
+Работа с клиентом
+
+Выберите направление контроля:
+"""
+                client_buttons = {
+                    "Контроль качества отработки входящих звонков": "client_calls",
+                    "Контроль отработки заявок с сайта": "client_website", 
+                    "Контроль занесения клиента в CRM": "client_crm_entry",
+                    "Контроль ведения комитента в CRM": "client_crm_consignor",
+                    "Контроль качества исходящих звонков": "client_outgoing_calls",
+                    "Контроль корректно оформленных документов": "client_documents",
+                    "Контроль соблюдения сроков оплаты клиентам и партнерам": "client_payments",
+                    "Работа в роли закрывающего менеджера": "client_closing_manager",
+                    "Отработка рекламаций": "client_complaints",
+                    "Контроль отработки заявок от КЦ": "client_call_center"
+                }
+                keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_buttons, interval=1)
+                await callback.message.edit_text(client_text, reply_markup=keyboard)
+            elif "Контроль отработки заявок от КЦ" in current_text and "Выберите направление:" in current_text:
+                # Возвращаемся к работе с клиентом
+                client_text = """
+Работа с клиентом
+
+Выберите направление контроля:
+"""
+                client_buttons = {
+                    "Контроль качества отработки входящих звонков": "client_calls",
+                    "Контроль отработки заявок с сайта": "client_website", 
+                    "Контроль занесения клиента в CRM": "client_crm_entry",
+                    "Контроль ведения комитента в CRM": "client_crm_consignor",
+                    "Контроль качества исходящих звонков": "client_outgoing_calls",
+                    "Контроль корректно оформленных документов": "client_documents",
+                    "Контроль соблюдения сроков оплаты клиентам и партнерам": "client_payments",
+                    "Работа в роли закрывающего менеджера": "client_closing_manager",
+                    "Отработка рекламаций": "client_complaints",
+                    "Контроль отработки заявок от КЦ": "client_call_center"
+                }
+                keyboard = await keyboard_templates.keyboard_ops.create_keyboard(client_buttons, interval=1)
+                await callback.message.edit_text(client_text, reply_markup=keyboard)
             else:
                 # По умолчанию возвращаемся к главному меню
                 main_text = "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!"
