@@ -1,0 +1,22 @@
+Команды для настройки Git (скопируйте и выполните по одной):
+
+1. Обновить удаленный репозиторий на HTTPS:
+git remote set-url origin https://github.com/v01cee/fresh_auto_info_neiro_bot.git
+
+2. Добавить все файлы в индекс:
+git add .
+
+3. Создать первый коммит:
+git commit -m "first commit"
+
+4. Переименовать ветку в main:
+git branch -M main
+
+5. Отправить код на GitHub:
+git push -u origin main
+
+6. Проверить статус:
+git status
+
+7. Проверить подключение к удаленному репозиторию:
+git remote -v
