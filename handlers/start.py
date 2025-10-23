@@ -524,35 +524,35 @@ async def handle_callback_queries(callback: CallbackQuery):
             
         # Обработчики для закрывающего менеджера
         case "closing_conversion":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "closing_conflicts":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "call_center_interaction":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "call_center_evaluation":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         # Обработчики для работы со складом
         case "warehouse_pricing_new_arrival":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "warehouse_advertising":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "warehouse_check_new_arrival":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "warehouse_status_control":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "warehouse_problematic":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "warehouse_average_age":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "warehouse_pre_sale_quality":
             pre_sale_text = """
@@ -570,33 +570,33 @@ async def handle_callback_queries(callback: CallbackQuery):
             
         # Обработчики для типов складов
         case "warehouse_buyout":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "warehouse_consignment":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "warehouse_45_plus":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         # Обработчики для работы с цифрами
         case "numbers_duty_2_1":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "numbers_duty_2_2":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         # Обработчики для работы с персоналом
         case "personnel_intern_adaptation":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "personnel_burnout":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "personnel_motivation":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "personnel_training":
-            await callback.message.edit_text("Пока нечего")
+            await callback.message.edit_text("В разработке")
             
         case "personnel_dismissal":
             dismissal_text = """
