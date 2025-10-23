@@ -21,4 +21,5 @@ class KeyboardTemplates:
             "Функционал РОО": "roo_functionality", 
             "Компетенции РОО": "roo_competencies"
         }
+        print(f"DEBUG: Создаем клавиатуру с кнопками: {buttons}")  # Отладочный лог
         return await self.keyboard_ops.create_keyboard(buttons, interval=1)

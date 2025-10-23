@@ -73,6 +73,7 @@ async def info_command(message: Message):
 
 async def handle_callback_queries(callback: CallbackQuery):
     """Обработчик всех callback запросов"""
+    print(f"DEBUG: Обработчик callback вызван! Данные: {callback.data}")  # Отладочный лог
     keyboard_templates = KeyboardTemplates()
     
     match callback.data:
