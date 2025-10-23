@@ -128,9 +128,109 @@ async def handle_callback_queries(callback: CallbackQuery):
             await callback.message.edit_text(competencies_text, reply_markup=keyboard)
             
         case "back_to_main":
-            main_text = "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!"
-            keyboard = await keyboard_templates.get_delayed_keyboard()
-            await callback.message.edit_text(main_text, reply_markup=keyboard)
+            # Определяем предыдущий уровень на основе текущего сообщения
+            current_text = callback.message.text
+            
+            if "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!" in current_text:
+                # Уже на главном меню, ничего не делаем
+                await callback.answer()
+                return
+            elif "Функционал РОО" in current_text and "Выберите направление работы:" in current_text:
+                # Возвращаемся к главному меню
+                main_text = "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!"
+                keyboard = await keyboard_templates.get_delayed_keyboard()
+                await callback.message.edit_text(main_text, reply_markup=keyboard)
+            elif "Работа с клиентом" in current_text and "Выберите направление контроля:" in current_text:
+                # Возвращаемся к функционалу РОО
+                functionality_text = """
+Функционал РОО
+
+Выберите направление работы:
+"""
+                functionality_buttons = {
+                    "Работа с поставками": "functionality_supplies",
+                    "Работа с клиентом": "functionality_client", 
+                    "Работа со складом": "functionality_warehouse",
+                    "Работа с цифрами": "functionality_numbers",
+                    "Работа с персоналом": "functionality_personnel"
+                }
+                keyboard = await keyboard_templates.keyboard_ops.create_keyboard(functionality_buttons, interval=1)
+                await callback.message.edit_text(functionality_text, reply_markup=keyboard)
+            elif "Работа со складом" in current_text and "Выберите направление работы:" in current_text:
+                # Возвращаемся к функционалу РОО
+                functionality_text = """
+Функционал РОО
+
+Выберите направление работы:
+"""
+                functionality_buttons = {
+                    "Работа с поставками": "functionality_supplies",
+                    "Работа с клиентом": "functionality_client", 
+                    "Работа со складом": "functionality_warehouse",
+                    "Работа с цифрами": "functionality_numbers",
+                    "Работа с персоналом": "functionality_personnel"
+                }
+                keyboard = await keyboard_templates.keyboard_ops.create_keyboard(functionality_buttons, interval=1)
+                await callback.message.edit_text(functionality_text, reply_markup=keyboard)
+            elif "Работа с персоналом" in current_text and "Выберите направление:" in current_text:
+                # Возвращаемся к функционалу РОО
+                functionality_text = """
+Функционал РОО
+
+Выберите направление работы:
+"""
+                functionality_buttons = {
+                    "Работа с поставками": "functionality_supplies",
+                    "Работа с клиентом": "functionality_client", 
+                    "Работа со складом": "functionality_warehouse",
+                    "Работа с цифрами": "functionality_numbers",
+                    "Работа с персоналом": "functionality_personnel"
+                }
+                keyboard = await keyboard_templates.keyboard_ops.create_keyboard(functionality_buttons, interval=1)
+                await callback.message.edit_text(functionality_text, reply_markup=keyboard)
+            elif "Работа с цифрами" in current_text and "Выберите обязанность:" in current_text:
+                # Возвращаемся к функционалу РОО
+                functionality_text = """
+Функционал РОО
+
+Выберите направление работы:
+"""
+                functionality_buttons = {
+                    "Работа с поставками": "functionality_supplies",
+                    "Работа с клиентом": "functionality_client", 
+                    "Работа со складом": "functionality_warehouse",
+                    "Работа с цифрами": "functionality_numbers",
+                    "Работа с персоналом": "functionality_personnel"
+                }
+                keyboard = await keyboard_templates.keyboard_ops.create_keyboard(functionality_buttons, interval=1)
+                await callback.message.edit_text(functionality_text, reply_markup=keyboard)
+            elif "Компетенции РОО" in current_text and "Выберите тип компетенций:" in current_text:
+                # Возвращаемся к главному меню
+                main_text = "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!"
+                keyboard = await keyboard_templates.get_delayed_keyboard()
+                await callback.message.edit_text(main_text, reply_markup=keyboard)
+            elif "Подбор персонала" in current_text and "Выберите направление:" in current_text:
+                # Возвращаемся к работе с персоналом
+                personnel_text = """
+Работа с персоналом
+
+Выберите направление:
+"""
+                personnel_buttons = {
+                    "Адаптация стажера": "personnel_intern_adaptation",
+                    "Работа с выгоранием": "personnel_burnout",
+                    "Мотивация": "personnel_motivation",
+                    "Обучение": "personnel_training",
+                    "Увольнение": "personnel_dismissal",
+                    "Подбор персонала": "personnel_recruitment"
+                }
+                keyboard = await keyboard_templates.keyboard_ops.create_keyboard(personnel_buttons, interval=1)
+                await callback.message.edit_text(personnel_text, reply_markup=keyboard)
+            else:
+                # По умолчанию возвращаемся к главному меню
+                main_text = "Выберите раздел который тебя интересует и FRESHBOT тебе поможет!"
+                keyboard = await keyboard_templates.get_delayed_keyboard()
+                await callback.message.edit_text(main_text, reply_markup=keyboard)
             
         # Обработчики для функционала РОО
         case "functionality_supplies":
