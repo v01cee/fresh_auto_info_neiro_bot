@@ -665,7 +665,11 @@ async def handle_callback_queries(callback: CallbackQuery):
 
 Когда мы дали ему обратную связь, что именно нас не устраивает в его работе и когда провели разбор и обучение.
 """
-            keyboard = await keyboard_templates.get_cancel_keyboard()
+            # Создаем кнопку "Назад" к меню "Работа с персоналом"
+            personnel_back_buttons = {
+                "<- Назад": "back_to_personnel_menu"
+            }
+            keyboard = await keyboard_templates.keyboard_ops.create_keyboard(personnel_back_buttons, interval=1)
             await callback.message.edit_text(dismissal_text, reply_markup=keyboard)
             
         case "personnel_recruitment":
@@ -701,8 +705,23 @@ async def handle_callback_queries(callback: CallbackQuery):
             await callback.message.edit_text(vacancy_text, reply_markup=keyboard)
             
         case "recruitment_profile":
+            # Сначала выводим первое сообщение
             profile_text_1 = """
-Мы ищем доброжелательного и располагающего к общению человека!
+HR это инструмент в подборе персонала. Задача РОО
+дать HR менеджеру чёткое описание критериев
+кандидатов которые нам нужны исходя из ситуации в
+отделе и потребностях в сотрудниках
+"""
+            await callback.message.edit_text(profile_text_1)
+            
+            # Задержка 3 секунды
+            await asyncio.sleep(3)
+            
+            # Затем выводим второе сообщение с кнопкой "Назад"
+            profile_text_2 = """
+Мы ищем доброжелательного
+и располагающего
+к общению человека!
 
 • Располагающий образ (у такого хочется купить)
 • Способность доносить мысли
@@ -710,18 +729,6 @@ async def handle_callback_queries(callback: CallbackQuery):
 • Готовность изучать новое (процедуры, регламенты, программы)
 • Способность работать на компьютере
 • Инициативный (Про активная жизненная позиция)
-"""
-            await callback.message.edit_text(profile_text_1)
-            
-            # Задержка 3 секунды
-            await asyncio.sleep(3)
-            
-            profile_text_2 = """
-Дополнительные требования:
-• Опыт работы в продажах приветствуется
-• Знание автомобильной тематики будет плюсом
-• Готовность к обучению и развитию
-• Коммуникабельность и стрессоустойчивость
 """
             # Создаем кнопку "Назад" к меню "Подбор персонала"
             recruitment_back_buttons = {
