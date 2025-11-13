@@ -30,8 +30,19 @@ async def main():
             logger.error(f"Переменные окружения: BOT_TOKEN={os.getenv('BOT_TOKEN', 'не установлен')}")
             return
         
+        # Проверка формата токена (должен быть в формате: число:строка)
+        token_parts = settings.bot_token.split(':')
+        if len(token_parts) != 2:
+            logger.error(f"Неверный формат токена! Токен должен быть в формате 'ID:TOKEN'")
+            logger.error(f"Текущий токен начинается с: {settings.bot_token[:20]}...")
+            return
+        
+        if not token_parts[0].isdigit():
+            logger.error(f"Неверный формат токена! ID бота должен быть числом")
+            return
+        
         logger.info(f"Токен бота загружен (длина: {len(settings.bot_token)} символов)")
-        logger.debug(f"Первые 10 символов токена: {settings.bot_token[:10]}...")
+        logger.debug(f"ID бота: {token_parts[0]}, токен начинается с: {token_parts[1][:10]}...")
         
         # Создание бота и диспетчера
         logger.info("Создание экземпляра бота...")

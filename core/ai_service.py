@@ -1,5 +1,6 @@
 import httpx
 import logging
+import os
 from typing import Optional, Dict, Any
 from core.config import settings
 
@@ -10,9 +11,15 @@ class AIService:
     """Сервис для работы с DeepSeek API"""
     
     def __init__(self):
-        self.api_key = getattr(settings, 'deepseek_api_key', '')
+        self.api_key = getattr(settings, 'deepseek_api_key', '') or os.getenv('DEEPSEEK_API_KEY', '')
         self.api_url = f"{getattr(settings, 'ai_service_url', 'https://api.deepseek.com/v1')}/chat/completions"
         self.model = "deepseek-chat"
+        
+        # Отладочный вывод
+        if not self.api_key:
+            logger.warning("DeepSeek API ключ не настроен")
+        else:
+            logger.debug(f"DeepSeek API ключ загружен (длина: {len(self.api_key)} символов)")
     
     async def search_content(self, user_query: str, content_index: Dict[str, str]) -> Optional[str]:
         """
