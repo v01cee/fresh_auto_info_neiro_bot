@@ -10,8 +10,8 @@ class AIService:
     """Сервис для работы с DeepSeek API"""
     
     def __init__(self):
-        self.api_key = settings.deepseek_api_key
-        self.api_url = f"{settings.ai_service_url}/chat/completions"
+        self.api_key = getattr(settings, 'deepseek_api_key', '')
+        self.api_url = f"{getattr(settings, 'ai_service_url', 'https://api.deepseek.com/v1')}/chat/completions"
         self.model = "deepseek-chat"
     
     async def search_content(self, user_query: str, content_index: Dict[str, str]) -> Optional[str]:
