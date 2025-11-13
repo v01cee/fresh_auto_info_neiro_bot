@@ -26,10 +26,12 @@ async def main():
         
         # Проверка токена
         if not settings.bot_token:
-            logger.error("Токен бота не найден! Проверьте файл .env")
+            logger.error("Токен бота не найден! Проверьте файл .env или переменные окружения")
+            logger.error(f"Переменные окружения: BOT_TOKEN={os.getenv('BOT_TOKEN', 'не установлен')}")
             return
         
         logger.info(f"Токен бота загружен (длина: {len(settings.bot_token)} символов)")
+        logger.debug(f"Первые 10 символов токена: {settings.bot_token[:10]}...")
         
         # Создание бота и диспетчера
         logger.info("Создание экземпляра бота...")
