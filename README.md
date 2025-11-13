@@ -22,17 +22,66 @@ git clone https://github.com/v01cee/fresh_auto_info_neiro_bot.git
 cd fresh_auto_info_neiro_bot
 ```
 
-### 2. Настройка окружения
+### 2. Настройка виртуального окружения
+
+#### Windows:
+```powershell
+# Автоматическая настройка (PowerShell)
+.\setup_venv.bat
+
+# Или вручную:
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install --upgrade pip
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+
+# Активация в PowerShell (может потребоваться разрешение):
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+.venv\Scripts\Activate.ps1
+
+# Или используйте готовый скрипт:
+.\activate_venv.ps1
+```
+
+#### Linux/Mac:
+```bash
+# Автоматическая настройка
+chmod +x setup_venv.sh
+./setup_venv.sh
+
+# Или вручную:
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### 3. Настройка переменных окружения
 ```bash
 # Скопируйте файл с переменными окружения
 cp env.example .env
 
-# Отредактируйте .env файл, добавив ваш токен бота
-# bot_token=your_bot_token_here
-# admin_ids=123456789,987654321
+# Файл .env уже содержит настройки, но при необходимости отредактируйте его
 ```
 
-### 3. Запуск бота
+### 4. Запуск бота
+
+#### Локальный запуск (без Docker):
+```powershell
+# Способ 1: Использовать Python напрямую из .venv (рекомендуется)
+.venv\Scripts\python.exe bot.py
+
+# Способ 2: Активировать окружение в PowerShell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+.venv\Scripts\Activate.ps1
+python bot.py
+
+# Способ 3: Использовать CMD (двойной клик на activate.bat)
+# Или в CMD:
+.venv\Scripts\activate.bat
+python bot.py
+```
+
+#### Запуск через Docker:
 ```bash
 # Сборка и запуск через Docker
 docker compose up -d --build
