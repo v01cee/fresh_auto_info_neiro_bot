@@ -11,13 +11,19 @@ class AIService:
     """Сервис для работы с DeepSeek API"""
     
     def __init__(self):
-        self.api_key = getattr(settings, 'deepseek_api_key', '') or os.getenv('DEEPSEEK_API_KEY', '')
+        # Пробуем загрузить из settings, затем из переменных окружения
+        api_key_from_settings = getattr(settings, 'deepseek_api_key', '')
+        api_key_from_env = os.getenv('deepseek_api_key') or os.getenv('DEEPSEEK_API_KEY', '')
+        self.api_key = api_key_from_settings or api_key_from_env
+        
         self.api_url = f"{getattr(settings, 'ai_service_url', 'https://api.deepseek.com/v1')}/chat/completions"
         self.model = "deepseek-chat"
         
         # Отладочный вывод
         if not self.api_key:
             logger.warning("DeepSeek API ключ не настроен")
+            logger.debug(f"Проверка: settings.deepseek_api_key={'*' * 10 if api_key_from_settings else 'NOT SET'}, "
+                        f"env deepseek_api_key={'*' * 10 if api_key_from_env else 'NOT SET'}")
         else:
             logger.debug(f"DeepSeek API ключ загружен (длина: {len(self.api_key)} символов)")
     
